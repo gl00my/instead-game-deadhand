@@ -305,7 +305,7 @@ room {
 		end
 	end;
 	before_Default = function(s, ev, w)
-		if not s.rotate or ev == 'Look' or ev == 'Wait' then
+		if not s.rotate or ev == 'Look' or ev == 'Wait' or ev == 'Inv' then
 			return false
 		end
 		if w and w:inside(pl) or w == pl then
