@@ -326,7 +326,7 @@ door {
 	end;
 	before_Close = [[Он закрывается автоматически.]];
 	description = function() p [[Рядом с люком находится красный рычаг.]]; enable 'lever' return false; end;
-}:attr 'openable,enterable,locked':disable();
+}:attr 'static,openable,enterable,locked':disable();
 obj {
 	nam = 'lever';
 		-"красный рычаг|рычаг";
@@ -435,7 +435,7 @@ door {
 			return 'ship'
 		end
 	end;
-}:attr 'openable,enterable,locked'
+}:attr 'static,openable,enterable,locked'
 global 'ask' (false)
 global 'perimetr' (false)
 global 'perimetr_ask' (0)
