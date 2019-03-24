@@ -277,7 +277,7 @@ obj {
 		walk 'space2';
 	end;
 }
-
+local DH_TO = 5
 room {
 	nam = 'space';
 	title = "открытый космос";
@@ -286,7 +286,7 @@ room {
 	step = 1;
 	daemon = function(s)
 		s.step = s.step + 1
-		if s.step > 3 and not here().rotate then
+		if s.step > DH_TO and not here().rotate then
 			s:daemonStop()
 			place 'tetr'
 			if isDaemon('radio') then
@@ -453,7 +453,7 @@ room {
 	title = "внутри корабля";
 	out_to = 'gate2';
 	daemon = function(s)
-		if good_to > 3 and s:once('ack') then
+		if good_to > DH_TO and s:once('ack') then
 			if here() == s then
 				p [[Сигналы прекратились. Ты заметил, что текст на экране изменился.]]
 			end
@@ -542,7 +542,7 @@ room {
 			nam = 'screen';
 			-"экран,консоль,текст";
 			description = function(s)
-				if good_to > 3 then
+				if good_to > DH_TO then
 					DaemonStop'ship2'
 					DaemonStop'radio'
 					walkin 'goodend'
@@ -592,6 +592,7 @@ cutscene {
 Сигнал с охраняемых объекты: восстановлен]];
 		[[{$fmt c|***}^^Ты медленно приходил в себя. Ужас неотвратимого только сейчас навалился на тебя
 со всей силой. Поэтому долгое время ты отстранённо парил в невесомости, пытаясь придти в себя.^^
+Похоже, что передача с Земли, принятая спутником, остановила процедуру последнего удара.^^
 Да, понадобится время, чтобы освоиться с этой машиной судного дня и послать сигнал в центр полётов.^^
 Но главное, что ты не стал виновником гибели своего мира. Это сейчас было всё, что имело для тебя смысл.]]
 	};
@@ -601,6 +602,7 @@ cutscene {
 room {
 	title = fmt.c(fmt.b([[СУДНЫЙ ДЕНЬ]]));
 	nam = 'titles';
+	noparser = true;
 	dsc = [[{$fmt c|Автор сюжета и кода: Косых Пётр^^
 Специально на ИНСТЕДОЗ-6^^
 Март -- 2019^^
