@@ -287,13 +287,14 @@ room {
 	step = 1;
 	daemon = function(s)
 		s.step = s.step + 1
-		if s.step > DH_TO and not here().rotate then
+		if s.step > 3 and not here().rotate then
 			s:daemonStop()
 			place 'tetr'
 			if isDaemon('radio') then
 				pn()
 			end
 			p [[Тебе показалось, что ты видишь какой-то яркий объект.]]
+			s:daemonStop()
 		end
 	end;
 	dsc = function(s)
