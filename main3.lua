@@ -159,7 +159,9 @@ obj {
 				p [[Ты включил радио на рабочей частоте 143,625 МГц.]];
 			end
 			DaemonStart 'radio'
-			DaemonStart 'space'
+			if here() == 'space' then
+				DaemonStart 'space'
+			end
 		end;
 		after_SwitchOff = function()
 			DaemonStop 'radio'
