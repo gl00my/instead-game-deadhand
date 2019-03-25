@@ -497,7 +497,7 @@ room {
 			else
 				good_to = 0
 			end
-			timeout = timeout - rnd(10)
+			timeout = timeout - rnd(25)
 			if timeout < 0 then
 				if timeout < 0 then
 					walkin 'badend'
