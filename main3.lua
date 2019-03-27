@@ -236,7 +236,18 @@ obj {
 	before_Default = [[Звёзды слишком далеко.]];
 }:attr 'scenery';
 
+game.before_Taste = function(s, w)
+	if _'suit':has'worn' then
+		p [[В скафандре?]]
+		return
+	end
+	return false
+end
+
 game.before_Smell = function(s, w)
+	if _'suit':hasnt'worn' then
+		return false
+	end
 	if not w or w:inside(pl) then
 		p [[В скафандре ничем не пахнет.]]
 		return
