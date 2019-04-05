@@ -7,7 +7,7 @@ require "fmt"
 fmt.dash = true
 fmt.quotes = true
 
-loadmod 'parser/mp-ru'
+require 'parser/mp-ru'
 pl.description = [[Ты -- астронавт в скафандре.]];
 
 local DH_TO = 2
