@@ -130,6 +130,7 @@ obj {
 			if freq then
 				if good_to > DH_TO and s:once('ack') then
 					p("Внезапно, пустота радиоэфира нарушилась.^",pres)
+					p [[^^Сигналы прекратились. Ты заметил, что текст на экране изменился.]]
 				else
 					p [[Ты слышишь шипящий звук из рации.]]
 				end
@@ -474,7 +475,9 @@ room {
 	daemon = function(s)
 		if good_to > DH_TO and s:once('ack') then
 			if here() == s then
-				p [[Сигналы прекратились. Ты заметил, что текст на экране изменился.]]
+				if not isDaemon'radio' then
+					p [[Сигналы прекратились. Ты заметил, что текст на экране изменился.]]
+				end
 			end
 			s:daemonStop()
 		else
@@ -522,7 +525,7 @@ room {
 			if ev == 'No' then
 				p [[Ну и правильно.]]
 			else
-				p [[Ты нажал на кнопку и на экране консоли побежали стоки текста.]]
+				p [[Ты нажал на кнопку и на экране консоли побежали строки текста.]]
 				DaemonStart 'ship2'
 				perimetr = true
 			end
